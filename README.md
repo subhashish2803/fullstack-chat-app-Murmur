@@ -1,4 +1,4 @@
-portfolio (/frontend/public/screenshot-for-readme.png)
+portfolio (/frontend/public/20250211_11184180.jpg)
 
 ### Setup .env file
 

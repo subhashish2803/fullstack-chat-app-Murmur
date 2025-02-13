@@ -1,4 +1,4 @@
-portfolio (/frontend/public/20250211_11184180.jpg)
+https://github.com/subhashish2803/fullstack-chat-app-Murmur/blob/main/frontend/public/20250211_11184180.jpg
 
 ### Setup .env file
 

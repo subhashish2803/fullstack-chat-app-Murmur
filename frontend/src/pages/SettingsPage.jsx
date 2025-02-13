@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import { THEMES } from "../constants";
 import { useThemeStore } from "../store/useThemeStore";
 import { Send } from "lucide-react";
@@ -18,14 +19,13 @@ const SettingsPage = () => {
           <p className="text-sm text-base-content/70">Choose a theme for your chat interface</p>
         </div>
 
+        {/* Theme Selector */}
         <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
           {THEMES.map((t) => (
             <button
               key={t}
-              className={`
-                group flex flex-col items-center gap-1.5 p-2 rounded-lg transition-colors
-                ${theme === t ? "bg-base-200" : "hover:bg-base-200/50"}
-              `}
+              className={`group flex flex-col items-center gap-1.5 p-2 rounded-lg transition-colors 
+                ${theme === t ? "bg-base-200" : "hover:bg-base-200/50"}`}
               onClick={() => setTheme(t)}
             >
               <div className="relative h-8 w-full rounded-md overflow-hidden" data-theme={t}>
@@ -44,12 +44,19 @@ const SettingsPage = () => {
         </div>
 
         {/* Preview Section */}
-        <h3 className="text-lg font-semibold mb-3">Preview</h3>
-        <div className="rounded-xl border border-base-300 overflow-hidden bg-base-100 shadow-lg">
-          <div className="p-4 bg-base-200">
+        <div className="relative">
+          <h3 className="text-lg font-semibold mb-3 relative z-10">Preview</h3>
+          <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-r from-pink-700 to-purple-600 blur-xl opacity-50 rounded-lg"></div>
+        </div>
+
+        <div className="rounded-xl border border-base-300 overflow-hidden bg-base-100 shadow-lg relative">
+          <div className="relative p-4 bg-base-200">
+          <div className="absolute inset-0 pointer-events-none">
+        <div className="grid min-h-full grid-cols-1 md:grid-cols-[1fr_80rem_1fr] border-x border-gray-800 dark:border-white/10 bg-[image:repeating-linear-gradient(315deg,_rgba(255,255,255,0.1)_0,_rgba(255,255,255,0.1)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed"></div>
+      </div>
             <div className="max-w-lg mx-auto">
               {/* Mock Chat UI */}
-              <div className="bg-base-100 rounded-xl shadow-sm overflow-hidden">
+              <div className="relative bg-base-100 rounded-xl shadow-sm overflow-hidden">
                 {/* Chat Header */}
                 <div className="px-4 py-3 border-b border-base-300 bg-base-100">
                   <div className="flex items-center gap-3">
@@ -57,7 +64,7 @@ const SettingsPage = () => {
                       J
                     </div>
                     <div>
-                      <h3 className="font-medium text-sm">John Doe</h3>
+                      <h3 className="font-medium text-sm">Ashu</h3>
                       <p className="text-xs text-base-content/70">Online</p>
                     </div>
                   </div>
@@ -71,18 +78,12 @@ const SettingsPage = () => {
                       className={`flex ${message.isSent ? "justify-end" : "justify-start"}`}
                     >
                       <div
-                        className={`
-                          max-w-[80%] rounded-xl p-3 shadow-sm
-                          ${message.isSent ? "bg-primary text-primary-content" : "bg-base-200"}
-                        `}
+                        className={`max-w-[80%] rounded-xl p-3 shadow-sm 
+                          ${message.isSent ? "bg-primary text-primary-content" : "bg-base-200"}`}
                       >
                         <p className="text-sm">{message.content}</p>
-                        <p
-                          className={`
-                            text-[10px] mt-1.5
-                            ${message.isSent ? "text-primary-content/70" : "text-base-content/70"}
-                          `}
-                        >
+                        <p className={`text-[10px] mt-1.5 
+                          ${message.isSent ? "text-primary-content/70" : "text-base-content/70"}`}>
                           12:00 PM
                         </p>
                       </div>
@@ -109,8 +110,11 @@ const SettingsPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
+
+      <Footer />
     </div>
   );
 };
+
 export default SettingsPage;
